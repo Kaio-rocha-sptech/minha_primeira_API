@@ -1,0 +1,255 @@
+# SDD — Software Design Description
+
+# Projeto: API Node.js MVC (Require)
+
+---
+
+# 1. Visão Geral
+
+Este projeto consiste em uma API backend desenvolvida em Node.js utilizando Express e arquitetura MVC.
+
+O objetivo principal desta primeira etapa é:
+
+* compreender a estrutura base de uma API
+* entender separação de responsabilidades
+* praticar organização de projeto
+* dominar fluxo HTTP básico
+* utilizar CommonJS (`require/module.exports`)
+
+Nesta fase inicial, o foco não é escalabilidade avançada ou banco de dados, mas sim domínio da arquitetura fundamental.
+
+---
+
+# 2. Tecnologias Utilizadas
+
+## Node.js
+
+Ambiente de execução JavaScript no backend.
+
+---
+
+## Express
+
+Framework responsável por:
+
+* gerenciamento de rotas
+* requisições HTTP
+* respostas HTTP
+* middlewares
+
+Instalado via:
+
+```bash
+npm install express
+```
+
+---
+
+# 3. Estrutura do Projeto
+
+Estrutura atual:
+
+```txt
+projeto/
+│
+├── controllers/
+├── models/
+├── routes/
+│
+├── app.js
+├── package.json
+```
+
+---
+
+# 4. Arquitetura Utilizada
+
+O projeto segue arquitetura MVC.
+
+Fluxo principal:
+
+```txt
+Cliente
+   ↓
+Routes
+   ↓
+Controllers
+   ↓
+Models
+   ↓
+Resposta
+```
+
+---
+
+# 5. Responsabilidades das Camadas
+
+# 5.1 Routes
+
+Responsável por:
+
+* definir endpoints
+* receber requisições
+* direcionar para controllers
+
+Exemplo:
+
+```txt
+GET /users
+POST /users
+```
+
+A camada de rotas não contém regra de negócio.
+
+---
+
+# 5.2 Controllers
+
+Responsável por:
+
+* receber req/res
+* processar entrada da requisição
+* chamar models
+* retornar respostas HTTP
+
+Exemplo:
+
+```js
+res.json()
+res.status()
+```
+
+---
+
+# 5.3 Models
+
+Responsável por:
+
+* manipulação de dados
+* armazenamento temporário
+* lógica de persistência
+
+Nesta fase inicial o projeto utiliza armazenamento em memória.
+
+---
+
+# 6. Decisões Arquiteturais
+
+## Não utilização de Services
+
+A camada de services não foi implementada nesta etapa.
+
+Motivo:
+
+* evitar complexidade prematura
+* focar no entendimento do fluxo MVC básico
+* simplificar aprendizado inicial
+
+---
+
+## Não utilização de DAO
+
+A camada DAO foi discutida conceitualmente, porém não implementada.
+
+Motivo:
+
+* ausência de banco de dados real
+* foco em fundamentos do MVC
+* evitar abstrações desnecessárias inicialmente
+
+---
+
+## Não utilização de Middlewares customizados
+
+Ainda não há necessidade de:
+
+* autenticação
+* validações avançadas
+* logs
+* interceptação de requisições
+
+Portanto middlewares próprios foram adiados.
+
+---
+
+# 7. app.js
+
+O arquivo `app.js` permanece na raiz do projeto.
+
+Responsável por:
+
+* iniciar Express
+* configurar middlewares básicos
+* registrar rotas
+
+Exemplo atual:
+
+```js
+const express = require('express')
+
+const app = express()
+
+app.use(express.json())
+
+app.listen(3000, () => {
+    console.log('Servidor rodando')
+})
+```
+
+---
+
+# 8. package.json
+
+Gerado com:
+
+```bash
+npm init -y
+```
+
+Responsável por:
+
+* metadados do projeto
+* gerenciamento de dependências
+* scripts da aplicação
+
+---
+
+# 9. Objetivos Técnicos Atuais
+
+O projeto atualmente busca consolidar:
+
+* estruturação backend
+* arquitetura MVC
+* uso de require/module.exports
+* manipulação de rotas
+* uso de req/res
+* criação de CRUD
+* organização de código
+
+---
+
+# 10. Próximos Passos Planejados
+
+Futuras evoluções possíveis:
+
+* camada services
+* middlewares
+* banco de dados
+* autenticação JWT
+* validações
+* upload de arquivos
+* ORM
+* Repository Pattern
+
+---
+
+# 11. Considerações Finais
+
+A arquitetura atual foi mantida propositalmente simples para priorizar:
+
+* clareza
+* entendimento estrutural
+* domínio do fluxo HTTP
+* aprendizado progressivo
+
+A expansão arquitetural ocorrerá conforme novas necessidades surgirem durante o desenvolvimento.
