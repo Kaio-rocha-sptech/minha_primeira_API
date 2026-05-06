@@ -1,5 +1,5 @@
-const app = require('./src/app')
+const app = require('./app')
 
-app.listen(3000, () => {
-    console.log('Servidor rodando')
+app.listen(3333, () => {
+    console.log('Servidor rodando na porta: 3333')
 })
