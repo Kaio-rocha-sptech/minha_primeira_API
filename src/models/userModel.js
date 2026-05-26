@@ -1,4 +1,5 @@
 
+
 const users = [
     {
         id: 1,
@@ -47,11 +48,23 @@ function deletarUsuario(id){
     return null;
 }
 
+async function buscarUsuarios(id1, id2) {
+
+    var user1 = getUserById(id1);
+    var user2 = getUserById(id2);
+
+    console.log(user1);
+    console.log(user2);
+
+    return await Promise.all([user1, user2]);
+}
+
 
 module.exports = {
     getAllUsers,
     getUserById,
     createUser,
     updateUser,
-    deletarUsuario
+    deletarUsuario,
+    buscarUsuarios
 }
